@@ -9,7 +9,6 @@ class SessionsController < ApplicationController
       redirect_to :root
     else
       flash[:notice] = user.errors.full_messages.join(' ')
-      byebug
       redirect_to :login
     end
   end
