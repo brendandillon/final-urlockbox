@@ -21,9 +21,14 @@ class Api::V1::LinksController < ApplicationController
     end
   end
 
+  def index
+    @links = Link.where(user: current_user)
+    render json: @links
+  end
+
   private
 
   def link_params
-    params.permit(:title, :url, :read)
+    params.permit(:title, :url, :read).merge(user_id: current_user.id)
   end
 end
