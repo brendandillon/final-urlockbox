@@ -5,6 +5,7 @@ $(document).ready(function(){
   $newLinkUrl  = $("#link-url");
 
   $("#new-link").on('submit', createLink);
+
 })
 
 function createLink (event){
@@ -32,6 +33,7 @@ function renderLink(link){
   if (link.read) {
     $("#link-" + link.id).addClass('read');
   };
+  setStatus(link);
   clearLink();
 }
 
@@ -41,6 +43,7 @@ function linkHTML(link) {
     mark_as = "Unread";
   };
     return `<div class='link' data-read=${link.read} data-id='${link.id}' id="link-${link.id}">
+              <div class='status'></div>
               <p class='link-title'>${ link.title }</p>
               <p class='link-url'>${ link.url }</p>
 
@@ -50,7 +53,6 @@ function linkHTML(link) {
               <p class="link_buttons">
                 <button class="mark-${mark_as}">Mark as ${mark_as}</button>
                 <button class='edit-link'>Edit</button>
-                <button class='delete-link'>Delete</button>
               </p>
             </div>`
 }
@@ -62,4 +64,25 @@ function clearLink() {
 
 function displayFailure(failureData){
   $('.error-messages').text(failureData.responseJSON.join(' '));
+}
+
+function setStatus(link) {
+  var status = ""
+  if (isTopResult(link)) {
+    status = "Top!";
+  } else if (isHotResult(link)) {
+    status = "Hot!";
+  } 
+
+  $('#link-' + link.id + ' .status').text(status);
+}
+
+function isTopResult(link) {
+  return (hotReads[0].url == link.url)
+}
+
+function isHotResult(link) {
+  return hotReads.some(function(read) {
+    return read.url == link.url
+  })
 }
