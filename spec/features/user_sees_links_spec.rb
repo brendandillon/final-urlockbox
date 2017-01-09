@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe 'A user sees their links' do
-  it 'shows only their links' do
+  it 'shows only their links', js: true do
     user = log_in_user
     user2 = FactoryGirl.create(:user, email: 'b@gmail.com')
     FactoryGirl.create(:link, user_id: user.id, title: 'MyLink')
