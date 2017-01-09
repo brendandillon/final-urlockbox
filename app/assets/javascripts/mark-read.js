@@ -20,6 +20,7 @@ function setMarkRead() {
    .then(function() {
     link.find('.link_read').text('Read: true');
     link.addClass('read');
+    link.data('read', true);
 
     $this.text('Mark as Unread')
     $this.off();
@@ -41,6 +42,7 @@ function setMarkUnread() {
    .then(function() {
     link.find('.link_read').text('Read: false');
     link.removeClass('read');
+    link.data('read', false);
 
     $this.text('Mark as Read')
     $this.off();
