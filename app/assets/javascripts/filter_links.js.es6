@@ -1,6 +1,7 @@
 $(document).ready(function(){
   $('#filter-read').on('click', filterRead) 
   $('#filter-unread').on('click', filterUnread) 
+  $('#search').on('keyup', filterBySearch)
 })
 
 function filterRead () {
@@ -21,4 +22,21 @@ function filterUnread() {
       $(link).show();
     }
   });
+}
+
+function filterBySearch() {
+  var search = $('#search').val();
+  $('.link').each(function(index, link) {
+    if (checkMatch.bind(this)(search)) {
+      $(link).show();
+    } else {
+      $(link).hide();
+    }
+  });
+}
+
+function checkMatch(textToMatch) {
+  var title = $(this).find('.link-title').text();
+  var url = $(this).find('.link-url').text();
+  return (title.includes(textToMatch) || url.includes(textToMatch))
 }
