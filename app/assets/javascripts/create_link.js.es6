@@ -29,6 +29,9 @@ function getLinkData() {
 function renderLink(link){
   $("#links-list").append( linkHTML(link) );
   $("#link-" + link.id + " .edit-link").click(updateLink); 
+  if (link.read) {
+    $("#link-" + link.id).addClass('read')
+  };
   clearLink();
 }
 

@@ -14,5 +14,6 @@ $(document).ready(function(){
     });
     
     link.find('.link_read').text('Read: true');
+    link.addClass('read');
   })
 })
