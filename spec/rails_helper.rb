@@ -98,3 +98,8 @@ RSpec.configure do |config|
   # https://relishapp.com/rspec/rspec-rails/docs
   config.infer_spec_type_from_file_location!
 end
+
+def log_in_user
+  user = FactoryGirl.create(:user)
+  allow_any_instance_of(ApplicationController).to receive(:current_user).and_return(user)
+end
