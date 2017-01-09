@@ -13,3 +13,12 @@
  *= require_tree .
  *= require_self
  */
+
+.editable {
+  background-color: red;
+}
+
+.editable p[contenteditable=true] {
+  border: 1px solid black;
+  background-color: #CCC;
+}
