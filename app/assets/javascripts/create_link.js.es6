@@ -50,7 +50,6 @@ function linkHTML(link) {
               <p class="link_buttons">
                 <button class="mark-${mark_as}">Mark as ${mark_as}</button>
                 <button class='edit-link'>Edit</button>
-                <button class='delete-link'>Delete</button>
               </p>
             </div>`
 }

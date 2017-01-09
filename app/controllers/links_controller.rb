@@ -6,6 +6,5 @@ class LinksController < ApplicationController
   end
 
   def index
-    @hot_links = Link.hot
   end
 end
