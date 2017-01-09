@@ -29,7 +29,7 @@ RSpec.describe "A user creates an account" do
 
       click_on 'Submit'
 
-      expect(page).to have_content('Email has already been taken.')
+      expect(page).to have_content('Email has already been taken')
     end
   end
 end
