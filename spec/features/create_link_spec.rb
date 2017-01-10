@@ -30,4 +30,16 @@ RSpec.describe "can create links", :js => :true do
 
     expect(page).to have_content('Url is not a valid URL')
   end
+
+  scenario "No title", :js => :true do
+    log_in_user
+
+    visit "/"
+    fill_in "URL:", :with => "http://turing.io"
+    click_on "Add Link"
+
+    within('#links-list') do 
+      expect(page).not_to have_text('http://turing.io')
+    end
+  end
 end
