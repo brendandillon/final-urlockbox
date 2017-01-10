@@ -1,7 +1,7 @@
 $(document).ready(function(){
   $('#filter-read').on('click', filterRead) 
   $('#filter-unread').on('click', filterUnread) 
-  $('#search').on('keyup', filterBySearch)
+  $('#search').on('keypress', filterBySearch)
 })
 
 function filterRead () {

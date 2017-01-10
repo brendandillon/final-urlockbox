@@ -9,7 +9,7 @@ RSpec.describe "Filter links with search" do
     visit '/'
 
     expect(page).to have_content('bananas')
-    fill_in 'search', with: 'ap'
+    find('input#search').send_keys('app')
 
     expect(page).to have_content('apples')
     expect(page).not_to have_content('bananas')
