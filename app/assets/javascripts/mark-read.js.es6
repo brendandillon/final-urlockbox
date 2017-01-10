@@ -53,7 +53,7 @@ function setMarkUnread() {
 }
 
 function sendToHotlinks() {
-  url = $(this).parents('.link').find('.link-url').text();
+  var url = $(this).closest('.link').find('.link-url').text();
   $.ajax({
     url: 'http://bd-final-hotreads.herokuapp.com/links',
     method: 'POST',
